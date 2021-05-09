@@ -13,6 +13,15 @@ class AppSettingVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let testLabel: UILabel = UILabel();
+        testLabel.text = "Hello World!";
+        testLabel.textColor = .red;
+        
+        self.view.addSubview(testLabel);
+        testLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true;
+        testLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true;
+        testLabel.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true;
+        testLabel.translatesAutoresizingMaskIntoConstraints = false
     }
     
 
