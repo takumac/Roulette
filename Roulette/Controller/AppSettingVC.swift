@@ -8,13 +8,15 @@
 import UIKit
 
 class AppSettingVC: UIViewController {
-
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         let testLabel: UILabel = UILabel();
-        testLabel.text = "Hello World!";
+        testLabel.text = "Hello World!!!!";
         testLabel.textColor = .red;
         
         self.view.addSubview(testLabel);
@@ -22,6 +24,9 @@ class AppSettingVC: UIViewController {
         testLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true;
         testLabel.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true;
         testLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        tableView.translatesAutoresizingMaskIntoConstraints = false
     }
     
 

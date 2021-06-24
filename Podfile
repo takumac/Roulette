@@ -3,9 +3,8 @@
 
 target 'Roulette' do
   # Comment the next line if you don't want to use dynamic frameworks
-  pod 'Charts', '~> 3.0'
   use_frameworks!
-
+    pod 'Charts', '~>3.6.0'
   # Pods for Roulette
 
 end
