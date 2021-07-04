@@ -123,6 +123,13 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "rouletteItemCell", for: indexPath) as! RouletteItemCell
+        // 背景色設定
+        if let setColor = UserDefaults.standard.object(forKey: "backGroundColor") as? Data {
+            let reloadColor = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(setColor) as? UIColor
+            cell.contentView.backgroundColor = reloadColor
+        } else {
+            cell.contentView.backgroundColor = Constants.backGroundColorPalette.palette[0].color
+        }
         cell.setValue(indexPath: indexPath, rouletteItemObj:rouletteItemDataSet.dataSet[indexPath.row])
         cell.delegate = self
         
@@ -136,6 +143,10 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constants.cellHeight
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

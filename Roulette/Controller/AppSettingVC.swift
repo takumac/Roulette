@@ -15,6 +15,7 @@ class AppSettingVC: FormViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        // 背景色設定
         if let setColor = UserDefaults.standard.object(forKey: "backGroundColor") as? Data {
             let reloadColor = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(setColor) as? UIColor
             self.tableView.backgroundColor = reloadColor
