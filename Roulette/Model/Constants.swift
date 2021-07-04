@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import ColorPickerRow
 
 struct Constants {
     // 各ルーレット項目の色を保持する配列
@@ -59,6 +60,17 @@ struct Constants {
         ]
     
     // 各画面の背景色
-    static let commmonBackGroundColor : UIColor = UIColor(cgColor: CGColor(red: 0.9168970293, green: 0.9977688411, blue: 0.9045526756, alpha: 1.0))
+//    static let commmonBackGroundColor : UIColor = UIColor(cgColor: CGColor(red: 0.9168970293, green: 0.9977688411, blue: 0.9045526756, alpha: 1.0))
+    
+    // 各画面の背景色候補
+    static let backGroundColorPalette = ColorPalette(name: "BackGround",
+                                                     palette: [ColorSpec(hex: "#F5D7D9", name: "bgColor1"),
+                                                               ColorSpec(hex: "#F5D7D4", name: "bgColor2"),
+                                                               ColorSpec(hex: "#F5D6F2", name: "bgColor3"),
+                                                               ColorSpec(hex: "#F2F3D6", name: "bgColor4"),
+                                                               ColorSpec(hex: "#D4F4D9", name: "bgColor5"),
+                                                               ColorSpec(hex: "#D1F4F1", name: "bgColor6"),
+                                                               ColorSpec(hex: "#D9DAF3", name: "bgColor7")]
+    )
 }
 

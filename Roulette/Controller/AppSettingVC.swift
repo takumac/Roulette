@@ -7,63 +7,77 @@
 
 import UIKit
 import Eureka
+import ColorPickerRow
 
 class AppSettingVC: FormViewController {
-    var type:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.tableView.backgroundColor = Constants.commmonBackGroundColor
-        form
-            +++ Section("hogehoge")
-            <<< TextRow() { row in
-                row.title = "TextRow"
-                row.placeholder = "TextRow"
-            }
-            <<< PhoneRow() {
-                $0.title = "数値入力2"
-                $0.placeholder = "hohohohoho"
-            }
-            <<< IntRow() { row in
-                row.title = "IntRow"
-                row.placeholder = "IntRow"
-            }
-            <<< DateRow() {
-                $0.title = "DateRow"
-            }
-            <<< PushRow<String>() {
-                $0.title = "type"
-                $0.options = ["a","b","c","d"]
-                $0.value = "a"
-                $0.selectorTitle = "select type"
-                self.type = $0.value ?? "type"
-            }
-            <<< SegmentedRow<String>() {
-                $0.title = "ルーレット速度"
-                $0.options = ["slow", "normal", "fast"]
-                $0.value = "slow"
-            }
-            <<< SwitchRow() {
-                $0.title = "チートスイッチ"
-                $0.value = false
-            }.onChange({ row in
-                
-            })
-            
-            
-            +++ Section("foofoo")
-            <<< PhoneRow() {
-                $0.title = "foofoo"
-                $0.placeholder = "yoroshiku"
-            }
+        if let setColor = UserDefaults.standard.object(forKey: "backGroundColor") as? Data {
+            let reloadColor = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(setColor) as? UIColor
+            self.tableView.backgroundColor = reloadColor
+        } else {
+            self.tableView.backgroundColor = Constants.backGroundColorPalette.palette[0].color
+        }
         
-            +++ ButtonRow("Button") { row in
-                row.tag = "delete_row"
-                row.title = "buttonrow"
-                
-            }
+        // 設定フォーム
+        form
+            +++ Section("アプリ設定")
+                // ルーレット時間の設定
+                <<< SegmentedRow<String>() {
+                    $0.title = "ルーレット時間"
+                    $0.options = ["short", "normal", "long"]
+                    $0.value = UserDefaults.standard.string(forKey: "rouletteTime") ?? "normal"
+                }.onChange{ row in
+                    UserDefaults.standard.set(row.value, forKey: "rouletteTime")
+                }
+                // テーマカラーの設定
+                <<< InlineColorPickerRow() {
+                    $0.title = "テーマカラー"
+                    $0.isCircular = false
+                    $0.showsPaletteNames = true
+                    if let setColor = UserDefaults.standard.object(forKey: "backGroundColor") as? Data {
+                        let reloadColor = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(setColor) as? UIColor
+                        $0.value = reloadColor
+                    } else {
+                        $0.value = Constants.backGroundColorPalette.palette[0].color
+                    }
+                }.cellSetup{ (cell, row) in
+                    row.palettes.insert(Constants.backGroundColorPalette, at: 0)
+                }.onChange{ (picker) in
+                    let selectColor = picker.value!
+                    self.tableView.backgroundColor = selectColor
+                    guard let setColor = try? NSKeyedArchiver.archivedData(withRootObject: selectColor, requiringSecureCoding: true) else {
+                        fatalError("Archive failed")
+                    }
+                    UserDefaults.standard.set(setColor, forKey: "backGroundColor")
+                    UserDefaults.standard.synchronize()
+                }
+                // チートフラグ設定
+                <<< SwitchRow() {
+                    $0.title = "出来レース"
+                    $0.value = UserDefaults.standard.bool(forKey: "cheatFlg")
+                }.onChange({ row in
+                    UserDefaults.standard.set(row.value, forKey: "cheatFlg")
+                })
+                <<< PushRow<String>() {
+                    $0.title = "出来レースについて"
+                }
+            +++ Section("情報")
+                // アプリバージョン
+                <<< LabelRow() {
+                    $0.title = "バージョン"
+                    $0.value = "1.0.0"
+                }
+                // デベロッパー情報
+                <<< PushRow<String>() {
+                    $0.title = "開発者"
+                }
+                <<< PushRow<String>() {
+                    $0.title = "レビューする"
+                }
     }
 
     /*

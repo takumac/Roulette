@@ -6,6 +6,7 @@ target 'Roulette' do
   use_frameworks!
     pod 'Charts', '~>3.6.0'
     pod 'Eureka', '~>5.3.3'  
+    pod 'ColorPickerRow'
   # Pods for Roulette
 
 end

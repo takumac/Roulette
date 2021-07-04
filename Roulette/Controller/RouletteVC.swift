@@ -146,6 +146,13 @@ class RouletteVC: UIViewController, ChartViewDelegate {
         titleLabel.attributedText = NSAttributedString(string: titleLabel.text!, attributes: Constants.titleLabelAttributes)
         // StartボタンのUI設定
         startButton.setAttributedTitle(NSAttributedString(string: (startButton.titleLabel?.text)!, attributes: Constants.buttonLabelAttributes), for: .normal)
+        // 背景色設定
+        if let setColor = UserDefaults.standard.object(forKey: "backGroundColor") as? Data {
+            let reloadColor = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(setColor) as? UIColor
+            self.view.backgroundColor = reloadColor
+        } else {
+            self.view.backgroundColor = Constants.backGroundColorPalette.palette[0].color
+        }
     }
     
     func displayNeedle() {

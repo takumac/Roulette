@@ -39,6 +39,15 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         } else {
             rouletteItemDataSet = RouletteItemDataSet()
         }
+        // 背景色設定
+        if let setColor = UserDefaults.standard.object(forKey: "backGroundColor") as? Data {
+            let reloadColor = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(setColor) as? UIColor
+            tableView.backgroundColor = reloadColor
+            self.view.backgroundColor = reloadColor
+        } else {
+            tableView.backgroundColor = Constants.backGroundColorPalette.palette[0].color
+            self.view.backgroundColor = Constants.backGroundColorPalette.palette[0].color
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
