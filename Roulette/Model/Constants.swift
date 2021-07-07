@@ -42,9 +42,6 @@ struct Constants {
     // 1セルあたりの高さ
     static let cellHeight: CGFloat = 90
     
-    // ルーレットの長さ
-    static let rouletteTime: Int = 4
-    
     // ルーレット画面のタイトルのフォント
     static let titleLabelAttributes : [NSAttributedString.Key : Any] =
         [
@@ -58,9 +55,6 @@ struct Constants {
             .font : UIFont.systemFont(ofSize: 20),
             .foregroundColor : UIColor.red
         ]
-    
-    // 各画面の背景色
-//    static let commmonBackGroundColor : UIColor = UIColor(cgColor: CGColor(red: 0.9168970293, green: 0.9977688411, blue: 0.9045526756, alpha: 1.0))
     
     // 各画面の背景色候補
     static let backGroundColorPalette = ColorPalette(name: "BackGround",
