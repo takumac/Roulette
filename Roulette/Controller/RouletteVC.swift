@@ -24,7 +24,11 @@ class RouletteVC: UIViewController, ChartViewDelegate {
 
         // Do any additional setup after loading the view.
         rouletteView.delegate = self
-        rouletteTime = Constants.rouletteTime
+        if UserDefaults.standard.object(forKey: "rouletteTime") != nil {
+            rouletteTime = UserDefaults.standard.integer(forKey: "rouletteTime")
+        } else {
+            rouletteTime = 3
+        }
         
         // AutoLayout
         // ラベルのAutoLayout
@@ -77,7 +81,9 @@ class RouletteVC: UIViewController, ChartViewDelegate {
     // MARK: - button action method
     @IBAction func tapStartButton(_ sender: Any) {
         startButton.isEnabled = false
-        rouletteSpin(duration: 3, fromAngle: 270, toAngle: CGFloat(270 + (360 * rouletteTime!)), easing: nil)
+        resultAngle = arc4random_uniform(360 + 1)
+        print(resultAngle)
+        rouletteSpin(duration: 3, fromAngle: 270, toAngle: CGFloat(270 + Int(resultAngle) + (360 * rouletteTime!)), easing: nil)
     }
     
     
@@ -102,14 +108,14 @@ class RouletteVC: UIViewController, ChartViewDelegate {
     
     // MARK: - ChartViewDelegate Method
     @objc func chartView(_ chartView: ChartViewBase, animatorDidStop animator: Animator) {
-        if rouletteTime! < 0 {
+        if rouletteTime! <= 0 {
             var resultRouletteItem = PieChartViewManager.getSelectedData(rouletteItemDataSet: rouletteItemDataSet, angle: Double(resultAngle))
             let resultIndex = PieChartViewManager.getSelectedDataIndex(rouletteItemDataSet: rouletteItemDataSet, angle: Double(resultAngle))
             if resultRouletteItem?.rouletteItem == nil {
                 resultRouletteItem = RouletteitemObj()
             }
             let alertController = UIAlertController(title: "Result",
-                                                    message: "選択されたのは " + resultRouletteItem!.rouletteItem + " です",
+                                                    message: resultRouletteItem!.rouletteItem,
                                                     preferredStyle: .alert)
             let continueAction = UIAlertAction(title: "Continue", style: .default) { (action: UIAlertAction) in
                 self.rouletteItemDataSet?.dataSet.remove(at: resultIndex)
@@ -124,16 +130,15 @@ class RouletteVC: UIViewController, ChartViewDelegate {
             present(alertController, animated: true, completion: nil)
             
             resultAngle = 0
-            rouletteTime = Constants.rouletteTime
+            if UserDefaults.standard.object(forKey: "rouletteTime") != nil {
+                rouletteTime = UserDefaults.standard.integer(forKey: "rouletteTime")
+            } else {
+                rouletteTime = 3
+            }
             startButton.isEnabled = true
             return
-        }
-        
-        if rouletteTime! == 0 {
-            resultAngle = arc4random_uniform(360 + 1)
-            rouletteSpin(duration: 3, fromAngle: 270, toAngle: CGFloat(270 + resultAngle), easing: nil)
         } else {
-            rouletteSpin(duration: 3, fromAngle: 270, toAngle: CGFloat(270 + (360 * rouletteTime!)), easing: nil)
+            rouletteSpin(duration: 3, fromAngle: CGFloat(270 + resultAngle), toAngle: CGFloat(270 + Int(resultAngle) + (360 * rouletteTime!)), easing: nil)
         }
         
         rouletteTime! -= 1

@@ -30,9 +30,36 @@ class AppSettingVC: FormViewController {
                 <<< SegmentedRow<String>() {
                     $0.title = "ルーレット時間"
                     $0.options = ["short", "normal", "long"]
-                    $0.value = UserDefaults.standard.string(forKey: "rouletteTime") ?? "normal"
+                    switch UserDefaults.standard.integer(forKey: "rouletteTime") {
+                    case 2:
+                        $0.value = "short"
+                        break
+                    case 3:
+                        $0.value = "normal"
+                        break
+                    case 4:
+                        $0.value = "long"
+                        break
+                    default:
+                        $0.value = "normal"
+                    }
                 }.onChange{ row in
-                    UserDefaults.standard.set(row.value, forKey: "rouletteTime")
+                    let selectValue = row.value ?? ""
+                    switch selectValue {
+                    case "short":
+                        UserDefaults.standard.set(2, forKey: "rouletteTime")
+                        break
+                    case "normal":
+                        UserDefaults.standard.set(3, forKey: "rouletteTime")
+                        break
+                    case "long":
+                        UserDefaults.standard.set(4, forKey: "rouletteTime")
+                        break
+                    default:
+                        UserDefaults.standard.set(3, forKey: "rouletteTime")
+                        print(selectValue)
+                        break
+                    }
                 }
                 // テーマカラーの設定
                 <<< InlineColorPickerRow() {
