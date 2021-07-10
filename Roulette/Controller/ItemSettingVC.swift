@@ -102,12 +102,22 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     @IBAction func tapRouletteButton(_ sender: Any) {
-        // 画面上の全てのViewに対するフォーカスを外す。
-        // こうすることで、最後に編集していたルーレット項目の内容を次画面に渡す配列に反映できる。
-        closeKeyboard()
-        // ルーレット画面へ遷移する
-        rouletteItemDataSet.title = (navigationItem.titleView as! UITextField).text
-        performSegue(withIdentifier: "toRouletteViewSegue", sender: nil)
+        if rouletteItemDataSet.dataSet.count < 2 {
+            let alertController = UIAlertController(title: "!!!Warning!!!",
+                                                    message: "ルーレット項目は2つ以上必要です",
+                                                    preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            alertController.addAction(okAction)
+            
+            present(alertController, animated: true, completion: nil)
+        } else {
+            // 画面上の全てのViewに対するフォーカスを外す。
+            // こうすることで、最後に編集していたルーレット項目の内容を次画面に渡す配列に反映できる。
+            closeKeyboard()
+            // ルーレット画面へ遷移する
+            rouletteItemDataSet.title = (navigationItem.titleView as! UITextField).text
+            performSegue(withIdentifier: "toRouletteViewSegue", sender: nil)
+        }
     }
     
     @IBAction func tapSettingButton(_ sender: Any) {
