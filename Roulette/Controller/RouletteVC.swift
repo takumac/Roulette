@@ -19,6 +19,10 @@ class RouletteVC: UIViewController, ChartViewDelegate {
     var rouletteTime: Int?
     var resultAngle: UInt32 = UInt32()
     
+    var resultRouletteItem: RouletteitemObj?
+    var resultIndex: Int?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -108,30 +112,7 @@ class RouletteVC: UIViewController, ChartViewDelegate {
     // MARK: - ChartViewDelegate Method
     @objc func chartView(_ chartView: ChartViewBase, animatorDidStop animator: Animator) {
         if rouletteTime! <= 0 {
-            var resultRouletteItem = PieChartViewManager.getSelectedData(rouletteItemDataSet: rouletteItemDataSet, angle: Double(resultAngle))
-            let resultIndex = PieChartViewManager.getSelectedDataIndex(rouletteItemDataSet: rouletteItemDataSet, angle: Double(resultAngle))
-            if resultRouletteItem?.rouletteItem == nil {
-                resultRouletteItem = RouletteitemObj()
-            }
-            let alertController = UIAlertController(title: "Result",
-                                                    message: resultRouletteItem!.rouletteItem,
-                                                    preferredStyle: .alert)
-            let continueAction = UIAlertAction(title: "Continue", style: .default) { (action: UIAlertAction) in
-                self.rouletteItemDataSet?.dataSet.remove(at: resultIndex)
-                PieChartViewManager.setRouletteItem(chartView: self.rouletteView, rouletteItemDataSet: self.rouletteItemDataSet ?? nil)
-            }
-            let resetAction = UIAlertAction(title: "Reset", style: .default) { (action: UIAlertAction) in
-                self.rouletteItemDataSet = DataManager.dataManagerInstance.copyDataSet()
-                PieChartViewManager.setRouletteItem(chartView: self.rouletteView, rouletteItemDataSet: self.rouletteItemDataSet)
-            }
-            
-            if self.rouletteItemDataSet!.dataSet.count < 3 {
-                alertController.addAction(resetAction)
-            } else {
-                alertController.addAction(continueAction)
-                alertController.addAction(resetAction)
-            }
-            present(alertController, animated: true, completion: nil)
+            performSegue(withIdentifier: "toResultViewSegue", sender: nil)
             
             resultAngle = 0
             if UserDefaults.standard.object(forKey: "rouletteTime") != nil {
@@ -175,5 +156,31 @@ class RouletteVC: UIViewController, ChartViewDelegate {
         needleView?.widthAnchor.constraint(equalTo: self.rouletteView.widthAnchor, multiplier: 0.15).isActive = true
         needleView?.heightAnchor.constraint(equalTo: self.rouletteView.heightAnchor, multiplier: 0.2).isActive = true
         needleView?.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    
+    // MARK: - Segue method
+    //画面遷移時に呼ばれる
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let resultVC = segue.destination as? ResultVC { // 遷移先が結果表示画面の場合
+            resultRouletteItem = PieChartViewManager.getSelectedData(rouletteItemDataSet: rouletteItemDataSet, angle: Double(resultAngle))
+            resultIndex = PieChartViewManager.getSelectedDataIndex(rouletteItemDataSet: rouletteItemDataSet, angle: Double(resultAngle))
+            if resultRouletteItem?.rouletteItem == nil {
+                resultRouletteItem = RouletteitemObj()
+            }
+            
+            resultVC.continueActionHandler = { // Continueボタンの制御
+                self.rouletteItemDataSet?.dataSet.remove(at: self.resultIndex!)
+                PieChartViewManager.setRouletteItem(chartView: self.rouletteView, rouletteItemDataSet: self.rouletteItemDataSet ?? nil)
+            }
+            
+            resultVC.resetActionHandler = { // Resetボタンの制御
+                self.rouletteItemDataSet = DataManager.dataManagerInstance.copyDataSet()
+                PieChartViewManager.setRouletteItem(chartView: self.rouletteView, rouletteItemDataSet: self.rouletteItemDataSet)
+            }
+            
+            resultVC.rouletteItemCount = self.rouletteItemDataSet!.dataSet.count
+            resultVC.resultItem = resultRouletteItem!.rouletteItem
+        }
     }
 }

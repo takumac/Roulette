@@ -46,11 +46,22 @@
                         <outlet property="rouletteView" destination="YvG-pt-gcZ" id="YjU-PL-fnm"/>
                         <outlet property="startButton" destination="3tF-Qn-6qG" id="9Z4-6t-VUh"/>
                         <outlet property="titleLabel" destination="XtU-ku-UiW" id="Pj3-kv-CI1"/>
+                        <segue destination="eaT-aO-c7e" kind="presentation" identifier="toResultViewSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="lNI-PT-eSA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GgD-h9-Ts6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-71.200000000000003" y="-19.340329835082461"/>
+        </scene>
+        <!--ResultView-->
+        <scene sceneID="Viu-qR-ZfH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ResultView" id="eaT-aO-c7e" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="vyn-EW-Zho"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oe3-mN-Rtg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="832" y="-20"/>
         </scene>
     </scenes>
 </document>

@@ -14,6 +14,8 @@
 		E16A78C8264837FD005F585D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E16A78C6264837FD005F585D /* Main.storyboard */; };
 		E16A78CA264837FE005F585D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E16A78C9264837FE005F585D /* Assets.xcassets */; };
 		E16A78CD264837FE005F585D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E16A78CB264837FE005F585D /* LaunchScreen.storyboard */; };
+		E1D4DD6F269968A500B2CC5C /* ResultView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1D4DD6E269968A400B2CC5C /* ResultView.storyboard */; };
+		E1D4DD72269968ED00B2CC5C /* ResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D4DD71269968ED00B2CC5C /* ResultVC.swift */; };
 		E1D7B029264841D6005CFD90 /* RouletteItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D7B018264841D6005CFD90 /* RouletteItemCell.swift */; };
 		E1D7B02A264841D6005CFD90 /* PieChartViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D7B019264841D6005CFD90 /* PieChartViewManager.swift */; };
 		E1D7B02B264841D6005CFD90 /* ColorSelectView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1D7B01A264841D6005CFD90 /* ColorSelectView.storyboard */; };
@@ -42,6 +44,8 @@
 		E16A78C9264837FE005F585D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E16A78CC264837FE005F585D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E16A78CE264837FE005F585D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1D4DD6E269968A400B2CC5C /* ResultView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ResultView.storyboard; sourceTree = "<group>"; };
+		E1D4DD71269968ED00B2CC5C /* ResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultVC.swift; sourceTree = "<group>"; };
 		E1D7B018264841D6005CFD90 /* RouletteItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouletteItemCell.swift; sourceTree = "<group>"; };
 		E1D7B019264841D6005CFD90 /* PieChartViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartViewManager.swift; sourceTree = "<group>"; };
 		E1D7B01A264841D6005CFD90 /* ColorSelectView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ColorSelectView.storyboard; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 				E1D7B01C264841D6005CFD90 /* ItemSettingView.storyboard */,
 				E1D7B01D264841D6005CFD90 /* RouletteItemCell.xib */,
 				E1D7B01E264841D6005CFD90 /* RouletteView.storyboard */,
+				E1D4DD6E269968A400B2CC5C /* ResultView.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 				E1D7B026264841D6005CFD90 /* ColorSelectVC.swift */,
 				E1D7B027264841D6005CFD90 /* AppSettingVC.swift */,
 				E1D7B028264841D6005CFD90 /* RouletteVC.swift */,
+				E1D4DD71269968ED00B2CC5C /* ResultVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -221,6 +227,7 @@
 			files = (
 				E16A78CD264837FE005F585D /* LaunchScreen.storyboard in Resources */,
 				E1D7B02D264841D6005CFD90 /* ItemSettingView.storyboard in Resources */,
+				E1D4DD6F269968A500B2CC5C /* ResultView.storyboard in Resources */,
 				E16A78CA264837FE005F585D /* Assets.xcassets in Resources */,
 				E16A78C8264837FD005F585D /* Main.storyboard in Resources */,
 				E1D7B02E264841D6005CFD90 /* RouletteItemCell.xib in Resources */,
@@ -290,6 +297,7 @@
 				E1D7B033264841D6005CFD90 /* RouletteItemDataSet.swift in Sources */,
 				E16A78C1264837FD005F585D /* AppDelegate.swift in Sources */,
 				E16A78C3264837FD005F585D /* SceneDelegate.swift in Sources */,
+				E1D4DD72269968ED00B2CC5C /* ResultVC.swift in Sources */,
 				E1D7B032264841D6005CFD90 /* RouletteItemObj.swift in Sources */,
 				E1D7B030264841D6005CFD90 /* Constants.swift in Sources */,
 			);
