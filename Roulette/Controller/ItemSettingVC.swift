@@ -257,7 +257,7 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             }
         }
         if segue.destination is RouletteVC { // 遷移先がルーレット画面の場合
-            rouletteItemDataSet.title = (navigationItem.titleView as! UITextField).text
+            rouletteItemDataSet.title = (navigationItem.titleView as! UITextField).text == "" ? "タイトルなし" : (navigationItem.titleView as! UITextField).text
             DataManager.dataManagerInstance.updateSetDataSet(dataSet: rouletteItemDataSet)
         }
         
