@@ -82,7 +82,6 @@ class RouletteVC: UIViewController, ChartViewDelegate {
     @IBAction func tapStartButton(_ sender: Any) {
         startButton.isEnabled = false
         resultAngle = arc4random_uniform(360 + 1)
-        print(resultAngle)
         rouletteSpin(duration: 3, fromAngle: 270, toAngle: CGFloat(270 + Int(resultAngle) + (360 * rouletteTime!)), easing: nil)
     }
     
@@ -125,8 +124,13 @@ class RouletteVC: UIViewController, ChartViewDelegate {
                 self.rouletteItemDataSet = DataManager.dataManagerInstance.copyDataSet()
                 PieChartViewManager.setRouletteItem(chartView: self.rouletteView, rouletteItemDataSet: self.rouletteItemDataSet)
             }
-            alertController.addAction(continueAction)
-            alertController.addAction(resetAction)
+            
+            if self.rouletteItemDataSet!.dataSet.count < 3 {
+                alertController.addAction(resetAction)
+            } else {
+                alertController.addAction(continueAction)
+                alertController.addAction(resetAction)
+            }
             present(alertController, animated: true, completion: nil)
             
             resultAngle = 0
