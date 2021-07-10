@@ -250,5 +250,10 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             rouletteItemDataSet.title = (navigationItem.titleView as! UITextField).text
             DataManager.dataManagerInstance.updateSetDataSet(dataSet: rouletteItemDataSet)
         }
+        
+        if segue.destination is AppSettingVC { // 遷移先が設定画面の場合
+            rouletteItemDataSet.title = (navigationItem.titleView as! UITextField).text
+            DataManager.dataManagerInstance.updateSetDataSet(dataSet: rouletteItemDataSet)
+        }
     }
 }
