@@ -24,7 +24,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4IF-mg-DAe">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4IF-mg-DAe" customClass="MDCRaisedButton">
                                 <rect key="frame" x="62" y="398" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
@@ -32,10 +32,10 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="tapContinueButton:" destination="0HO-x0-eX6" eventType="touchUpInside" id="jjg-j7-qNa"/>
+                                    <action selector="tapContinueButton:" destination="0HO-x0-eX6" eventType="touchUpInside" id="BqU-hI-TVv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HI8-g1-qH9">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HI8-g1-qH9" customClass="MDCRaisedButton">
                                 <rect key="frame" x="222" y="398" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
@@ -51,8 +51,8 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
-                        <outlet property="continueButton" destination="4IF-mg-DAe" id="6kQ-fs-Abd"/>
-                        <outlet property="resetButton" destination="HI8-g1-qH9" id="Nc2-JJ-Twz"/>
+                        <outlet property="continueButton" destination="4IF-mg-DAe" id="AgE-zK-EaI"/>
+                        <outlet property="resetButton" destination="HI8-g1-qH9" id="R2L-fx-qgX"/>
                         <outlet property="resultLabel" destination="Bqg-TJ-XDU" id="SfW-ls-r1n"/>
                     </connections>
                 </viewController>

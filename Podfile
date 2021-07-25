@@ -7,6 +7,7 @@ target 'Roulette' do
     pod 'Charts', '~>3.6.0'
     pod 'Eureka', '~>5.3.3'  
     pod 'ColorPickerRow'
+    pod 'MaterialComponents'
   # Pods for Roulette
 
 end

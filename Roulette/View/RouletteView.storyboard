@@ -27,7 +27,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3tF-Qn-6qG">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3tF-Qn-6qG" customClass="MDCRaisedButton">
                                 <rect key="frame" x="0.0" y="527" width="375" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.75777467840000001" blue="0.69389061839999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -44,7 +44,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="rouletteView" destination="YvG-pt-gcZ" id="YjU-PL-fnm"/>
-                        <outlet property="startButton" destination="3tF-Qn-6qG" id="9Z4-6t-VUh"/>
+                        <outlet property="startButton" destination="3tF-Qn-6qG" id="dTy-zp-6PW"/>
                         <outlet property="titleLabel" destination="XtU-ku-UiW" id="Pj3-kv-CI1"/>
                         <segue destination="eaT-aO-c7e" kind="presentation" identifier="toResultViewSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="lNI-PT-eSA"/>
                     </connections>

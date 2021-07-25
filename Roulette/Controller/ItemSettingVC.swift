@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import MaterialComponents
 
 class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSource, RouletteItemCelldelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var addButton: MDCRaisedButton!
+    
     
     var rouletteItemDataSet: RouletteItemDataSet!
     var cheatItemIndex: Int?

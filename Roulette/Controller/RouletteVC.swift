@@ -7,11 +7,12 @@
 
 import UIKit
 import Charts
+import MaterialComponents
 
 class RouletteVC: UIViewController, ChartViewDelegate {
     
     @IBOutlet weak var rouletteView: PieChartView!
-    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var startButton: MDCRaisedButton!
     @IBOutlet weak var titleLabel: UILabel!
     
     var rouletteItemDataSet: RouletteItemDataSet?

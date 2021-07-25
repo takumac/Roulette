@@ -6,30 +6,28 @@
 //
 
 import UIKit
+import MaterialComponents
 
 class ResultVC: UIViewController {
 
     @IBOutlet weak var resultLabel: UILabel!
-    @IBOutlet weak var continueButton: UIButton!
-    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var continueButton: MDCRaisedButton!
+    @IBOutlet weak var resetButton: MDCRaisedButton!
     
     var continueActionHandler: (() -> (Void))?
     var resetActionHandler: (() -> (Void))?
     var rouletteItemCount: Int!
     var resultItem: String!
     
+    let button = MDCButton()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
+        setUI()
         self.resultLabel.text = resultItem
-        
-        if rouletteItemCount < 3 {
-            self.continueButton.isEnabled = false
-            self.continueButton.alpha = 0.3
-        }
         
         // AutoLayout
         resultLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
@@ -63,7 +61,15 @@ class ResultVC: UIViewController {
 
     // MARK: - UI setting method
     func setUI() {
+        self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
         
+        continueButton.layer.cornerRadius = CGFloat(10)
+        resetButton.layer.cornerRadius = CGFloat(10)
+        
+        if rouletteItemCount < 3 {
+            self.continueButton.isEnabled = false
+            self.continueButton.alpha = 0.3
+        }
     }
     
     // MARK: - button action method

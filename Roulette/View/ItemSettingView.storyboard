@@ -20,7 +20,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.91689702930000005" green="0.99776884109999997" blue="0.90455267559999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPg-Cg-z3z">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPg-Cg-z3z" customClass="MDCRaisedButton">
                                 <rect key="frame" x="0.0" y="598" width="375" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.82080613175489925" blue="0.76636244297380685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -48,7 +48,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addButton" destination="wPg-Cg-z3z" id="3he-5S-vyR"/>
+                        <outlet property="addButton" destination="wPg-Cg-z3z" id="Qnp-DF-dyK"/>
                         <outlet property="tableView" destination="zCq-1z-g5x" id="nQf-fq-MRM"/>
                         <segue destination="K4s-6W-jJc" kind="presentation" identifier="toColorSelectViewSegue" id="diY-vn-Ppx"/>
                         <segue destination="OVV-YN-PDe" kind="show" identifier="toRouletteViewSegue" id="gLi-Rg-Hcg"/>
