@@ -22,6 +22,8 @@ class RouletteVC: UIViewController, ChartViewDelegate {
     var resultRouletteItem: RouletteitemObj?
     var resultIndex: Int?
     
+    var cheatItemIndex: Int!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,7 +87,15 @@ class RouletteVC: UIViewController, ChartViewDelegate {
     // MARK: - button action method
     @IBAction func tapStartButton(_ sender: Any) {
         startButton.isEnabled = false
-        resultAngle = arc4random_uniform(360 + 1)
+        
+        if (UserDefaults.standard.bool(forKey: "cheatFlg") == true) && (DataManager.dataManagerInstance.currentDataSet?.dataSet.count == self.rouletteItemDataSet?.dataSet.count) { // 出来レースOn&&ルーレット1回目の時
+            let resultAngleFrom = PieChartViewManager.getCheatAngleFrom(rouletteItemDataSet: rouletteItemDataSet, cheatIndex: cheatItemIndex)
+            let resultAngleTo = PieChartViewManager.getCheatAngleTo(rouletteItemDataSet: rouletteItemDataSet, cheatIndex: cheatItemIndex)
+            
+            resultAngle = 360 - UInt32(resultAngleTo - ((resultAngleTo - resultAngleFrom) / 2.0))
+        } else {
+            resultAngle = arc4random_uniform(360 + 1)
+        }
         rouletteSpin(duration: 3, fromAngle: 270, toAngle: CGFloat(270 + Int(resultAngle) + (360 * rouletteTime!)), easing: nil)
     }
     

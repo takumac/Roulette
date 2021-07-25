@@ -13,6 +13,7 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     @IBOutlet weak var addButton: UIButton!
     
     var rouletteItemDataSet: RouletteItemDataSet!
+    var cheatItemIndex: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,9 +54,11 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
         registerNotification()
+        
         // キーボード外(TextField等の部品を除く)をタップしたらキーボードを閉じるように設定
-        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(closeKeyboard))
-        self.view.addGestureRecognizer(tapGesture)
+        let singleTapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(closeKeyboard))
+        singleTapGesture.numberOfTapsRequired = 1
+        self.view.addGestureRecognizer(singleTapGesture)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -244,6 +247,14 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         performSegue(withIdentifier: "toColorSelectViewSegue", sender: button)
     }
     
+    func doubleTapGestureAction(cell: RouletteItemCell) {
+        if UserDefaults.standard.bool(forKey: "cheatFlg") == true {
+            let tappedIndexPath = tableView.indexPath(for: cell)
+            let tappedRow = tappedIndexPath?.row
+            cheatItemIndex = tappedRow
+        }
+    }
+    
     
     // MARK: - Segue method
     //画面遷移時に呼ばれる
@@ -256,7 +267,12 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 }
             }
         }
-        if segue.destination is RouletteVC { // 遷移先がルーレット画面の場合
+        if let rouletteVC = segue.destination as? RouletteVC { // 遷移先がルーレット画面の場合
+            if let cheatIndex = self.cheatItemIndex {
+                rouletteVC.cheatItemIndex = cheatIndex
+            } else {
+                rouletteVC.cheatItemIndex = 0
+            }
             rouletteItemDataSet.title = (navigationItem.titleView as! UITextField).text == "" ? "タイトルなし" : (navigationItem.titleView as! UITextField).text
             DataManager.dataManagerInstance.updateSetDataSet(dataSet: rouletteItemDataSet)
         }

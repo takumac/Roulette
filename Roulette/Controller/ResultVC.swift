@@ -30,6 +30,24 @@ class ResultVC: UIViewController {
             self.continueButton.isEnabled = false
             self.continueButton.alpha = 0.3
         }
+        
+        // AutoLayout
+        resultLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        resultLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: CGFloat(-50)).isActive = true
+        resultLabel.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.8).isActive = true
+        resultLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        continueButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: -CGFloat(self.view.frame.width / 4)).isActive = true
+        continueButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: CGFloat(100)).isActive = true
+        continueButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.3).isActive = true
+        continueButton.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.1).isActive = true
+        continueButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        resetButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: CGFloat(self.view.frame.width / 4)).isActive = true
+        resetButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: CGFloat(100)).isActive = true
+        resetButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.3).isActive = true
+        resetButton.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.1).isActive = true
+        resetButton.translatesAutoresizingMaskIntoConstraints = false
     }
     
 
@@ -43,6 +61,12 @@ class ResultVC: UIViewController {
     }
     */
 
+    // MARK: - UI setting method
+    func setUI() {
+        
+    }
+    
+    // MARK: - button action method
     @IBAction func tapContinueButton(_ sender: Any) {
         continueActionHandler!()
         self.dismiss(animated: true, completion: nil)

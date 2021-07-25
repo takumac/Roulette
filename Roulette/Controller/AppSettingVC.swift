@@ -57,7 +57,6 @@ class AppSettingVC: FormViewController {
                         break
                     default:
                         UserDefaults.standard.set(3, forKey: "rouletteTime")
-                        print(selectValue)
                         break
                     }
                 }

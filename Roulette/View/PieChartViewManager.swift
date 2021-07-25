@@ -87,6 +87,41 @@ class PieChartViewManager {
     }
     
     
+    static func getCheatAngleFrom(rouletteItemDataSet: RouletteItemDataSet?, cheatIndex: Int) -> Double {
+        guard let dataSet = rouletteItemDataSet else {
+            return 0
+        }
+        
+        let ratioPerArray = (0..<dataSet.dataSet.count).map { (i) -> Double in
+            return (Double(dataSet.dataSet[i].ratio) / Double(getRange(rouletteItemDateSet: dataSet)))
+        }
+        
+        var sum = 0.0
+        for index in (0..<cheatIndex).reversed() {
+            sum += ratioPerArray[index]
+        }
+        
+        return sum * 360.0
+    }
+    
+    
+    static func getCheatAngleTo(rouletteItemDataSet: RouletteItemDataSet?, cheatIndex: Int) -> Double {
+        guard let dataSet = rouletteItemDataSet else {
+            return 0
+        }
+        
+        let ratioPerArray = (0..<dataSet.dataSet.count).map { (i) -> Double in
+            return (Double(dataSet.dataSet[i].ratio) / Double(getRange(rouletteItemDateSet: dataSet)))
+        }
+        
+        var sum = 0.0
+        for index in (0..<cheatIndex+1).reversed() {
+            sum += ratioPerArray[index]
+        }
+        
+        return sum * 360.0
+    }
+    
     static func getRange(rouletteItemDateSet: RouletteItemDataSet) -> Int {
         var countSum = 0
         for i in 0..<rouletteItemDateSet.dataSet.count {

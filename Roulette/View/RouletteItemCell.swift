@@ -11,6 +11,7 @@ protocol RouletteItemCelldelegate {
     func textFieldShouldBeginEditing(cell: RouletteItemCell, textField: UITextField) -> ()
     func textFieldDidEndEditing(cell: RouletteItemCell, textField: UITextField) -> ()
     func tapColorButton(button: UIButton)
+    func doubleTapGestureAction(cell: RouletteItemCell)
 }
 
 class RouletteItemCell: UITableViewCell, UITextFieldDelegate {
@@ -27,6 +28,11 @@ class RouletteItemCell: UITableViewCell, UITextFieldDelegate {
         super.awakeFromNib()
         // Initialization code
         setUI()
+        
+        // ダブルタップでチート設定
+        let doubleTapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(doubleTapGestureAction(sender:)))
+        doubleTapGesture.numberOfTapsRequired = 2
+        self.addGestureRecognizer(doubleTapGesture)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -98,5 +104,10 @@ class RouletteItemCell: UITableViewCell, UITextFieldDelegate {
         self.delegate.tapColorButton(button: sender as! UIButton)
     }
     
+    
+    // MARK: - tapGesture method
+    @objc func doubleTapGestureAction(sender: AnyObject) {
+        self.delegate.doubleTapGestureAction(cell: self)
+    }
     
 }
