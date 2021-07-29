@@ -12,6 +12,7 @@ import MaterialComponents
 class RouletteVC: UIViewController, ChartViewDelegate {
     
     @IBOutlet weak var rouletteView: PieChartView!
+    @IBOutlet weak var buttonAreaView: UIView!
     @IBOutlet weak var startButton: MDCRaisedButton!
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -38,23 +39,28 @@ class RouletteVC: UIViewController, ChartViewDelegate {
         }
         
         // AutoLayout
-        // ラベルのAutoLayout
         titleLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         titleLabel.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.1).isActive = true
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        // ルーレットのAutoLayout
+        // AutoLayout
         rouletteView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
         rouletteView.bottomAnchor.constraint(equalTo: startButton.topAnchor).isActive = true
         rouletteView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         rouletteView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         rouletteView.translatesAutoresizingMaskIntoConstraints = false
+        // AutoLayout
+        buttonAreaView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        buttonAreaView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        buttonAreaView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        buttonAreaView.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.1).isActive = true
+        buttonAreaView.translatesAutoresizingMaskIntoConstraints = false
         // ルーレットのスタートボタンのAutoLayout
-        startButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        startButton.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        startButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        startButton.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.1).isActive = true
+        startButton.centerXAnchor.constraint(equalTo: buttonAreaView.centerXAnchor).isActive = true
+        startButton.centerYAnchor.constraint(equalTo: buttonAreaView.centerYAnchor).isActive = true
+        startButton.widthAnchor.constraint(equalTo: buttonAreaView.widthAnchor, multiplier: 0.8).isActive = true
+        startButton.heightAnchor.constraint(equalTo: buttonAreaView.heightAnchor, multiplier: 0.7).isActive = true
         startButton.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -147,12 +153,15 @@ class RouletteVC: UIViewController, ChartViewDelegate {
         titleLabel.attributedText = NSAttributedString(string: titleLabel.text!, attributes: Constants.titleLabelAttributes)
         // StartボタンのUI設定
         startButton.setAttributedTitle(NSAttributedString(string: (startButton.titleLabel?.text)!, attributes: Constants.buttonLabelAttributes), for: .normal)
+        startButton.layer.cornerRadius = Constants.defaultCornerRadius
         // 背景色設定
         if let setColor = UserDefaults.standard.object(forKey: "backGroundColor") as? Data {
             let reloadColor = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(setColor) as? UIColor
             self.view.backgroundColor = reloadColor
+            self.buttonAreaView.backgroundColor = reloadColor
         } else {
             self.view.backgroundColor = Constants.backGroundColorPalette.palette[0].color
+            self.buttonAreaView.backgroundColor = Constants.backGroundColorPalette.palette[0].color
         }
     }
     

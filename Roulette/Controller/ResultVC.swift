@@ -63,8 +63,8 @@ class ResultVC: UIViewController {
     func setUI() {
         self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
         
-        continueButton.layer.cornerRadius = CGFloat(10)
-        resetButton.layer.cornerRadius = CGFloat(10)
+        continueButton.layer.cornerRadius = Constants.defaultCornerRadius
+        resetButton.layer.cornerRadius = Constants.defaultCornerRadius
         
         if rouletteItemCount < 3 {
             self.continueButton.isEnabled = false

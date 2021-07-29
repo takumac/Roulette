@@ -11,8 +11,10 @@ import MaterialComponents
 class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSource, RouletteItemCelldelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var addButton: MDCRaisedButton!
+    @IBOutlet weak var buttonAreaView: UIView!
     
+    @IBOutlet weak var addButton: MDCRaisedButton!
+    @IBOutlet weak var favoriteButton: MDCRaisedButton!
     
     var rouletteItemDataSet: RouletteItemDataSet!
     var cheatItemIndex: Int?
@@ -29,11 +31,23 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         tableView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         tableView.translatesAutoresizingMaskIntoConstraints = false
         // AutoLayout
-        addButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        addButton.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        addButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        addButton.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.1).isActive = true
+        buttonAreaView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        buttonAreaView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        buttonAreaView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        buttonAreaView.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.1).isActive = true
+        buttonAreaView.translatesAutoresizingMaskIntoConstraints = false
+        // AutoLayout
+        addButton.centerXAnchor.constraint(equalTo: buttonAreaView.centerXAnchor, constant: -CGFloat(self.view.frame.width / 4)).isActive = true
+        addButton.centerYAnchor.constraint(equalTo: buttonAreaView.centerYAnchor).isActive = true
+        addButton.widthAnchor.constraint(equalTo: buttonAreaView.widthAnchor, multiplier: 0.4).isActive = true
+        addButton.heightAnchor.constraint(equalTo: buttonAreaView.heightAnchor, multiplier: 0.7).isActive = true
         addButton.translatesAutoresizingMaskIntoConstraints = false
+        // AutoLayout
+        favoriteButton.centerXAnchor.constraint(equalTo: buttonAreaView.centerXAnchor, constant: CGFloat(self.view.frame.width / 4)).isActive = true
+        favoriteButton.centerYAnchor.constraint(equalTo: buttonAreaView.centerYAnchor).isActive = true
+        favoriteButton.widthAnchor.constraint(equalTo: buttonAreaView.widthAnchor, multiplier: 0.4).isActive = true
+        favoriteButton.heightAnchor.constraint(equalTo: buttonAreaView.heightAnchor, multiplier: 0.7).isActive = true
+        favoriteButton.translatesAutoresizingMaskIntoConstraints = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,9 +60,11 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         if let setColor = UserDefaults.standard.object(forKey: "backGroundColor") as? Data {
             let reloadColor = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(setColor) as? UIColor
             tableView.backgroundColor = reloadColor
+            buttonAreaView.backgroundColor = reloadColor
             self.view.backgroundColor = reloadColor
         } else {
             tableView.backgroundColor = Constants.backGroundColorPalette.palette[0].color
+            buttonAreaView.backgroundColor = Constants.backGroundColorPalette.palette[0].color
             self.view.backgroundColor = Constants.backGroundColorPalette.palette[0].color
         }
     }
@@ -81,6 +97,10 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         tableView.register(UINib(nibName: "RouletteItemCell", bundle: nil), forCellReuseIdentifier: "rouletteItemCell")
         // 項目追加ボタンの設定
         addButton.setAttributedTitle(NSAttributedString(string: (addButton.titleLabel?.text)!, attributes: Constants.buttonLabelAttributes), for: .normal)
+        addButton.layer.cornerRadius = Constants.defaultCornerRadius
+        // お気に入りボタンの設定
+        favoriteButton.setAttributedTitle(NSAttributedString(string: (favoriteButton.titleLabel?.text)!, attributes: Constants.buttonLabelAttributes), for: .normal)
+        favoriteButton.layer.cornerRadius = Constants.defaultCornerRadius
     }
     
     func setTitleTextField() {
@@ -207,11 +227,11 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 keyboardFrame = keyboard.cgRectValue
                 tableView.contentInset = UIEdgeInsets(top: 0,
                                                       left: 0,
-                                                      bottom: keyboardFrame.height + Constants.cellHeight - (addButton.frame.height/2),
+                                                      bottom: keyboardFrame.height + Constants.cellHeight - (buttonAreaView.frame.height/2),
                                                       right: 0)
                 tableView.scrollIndicatorInsets = UIEdgeInsets(top: 0,
                                                                left: 0,
-                                                               bottom: keyboardFrame.height + Constants.cellHeight - (addButton.frame.height/2),
+                                                               bottom: keyboardFrame.height + Constants.cellHeight - (buttonAreaView.frame.height/2),
                                                                right: 0)
             }
         }

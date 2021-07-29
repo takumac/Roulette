@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,16 +21,30 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.91689702930000005" green="0.99776884109999997" blue="0.90455267559999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPg-Cg-z3z" customClass="MDCRaisedButton">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h1V-mr-wPn">
                                 <rect key="frame" x="0.0" y="598" width="375" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.82080613175489925" blue="0.76636244297380685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="項目追加"/>
-                                <connections>
-                                    <action selector="tapAddItemButton:" destination="RyW-e8-fpU" eventType="touchUpInside" id="yy8-vp-TD0"/>
-                                </connections>
-                            </button>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPg-Cg-z3z" customClass="MDCRaisedButton">
+                                        <rect key="frame" x="25" y="17" width="150" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.82080613175489925" blue="0.76636244297380685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="項目追加"/>
+                                        <connections>
+                                            <action selector="tapAddItemButton:" destination="RyW-e8-fpU" eventType="touchUpInside" id="yy8-vp-TD0"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2e-9s-cBh" userLabel="Favorite Button" customClass="MDCRaisedButton">
+                                        <rect key="frame" x="203" y="17" width="150" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.82080613179999995" blue="0.766362443" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="お気に入り"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oAU-DI-UA1"/>
                         <color key="backgroundColor" red="0.91689702930000005" green="0.99776884109999997" blue="0.90455267559999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -49,6 +64,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="wPg-Cg-z3z" id="Qnp-DF-dyK"/>
+                        <outlet property="buttonAreaView" destination="h1V-mr-wPn" id="CX6-cR-E0w"/>
+                        <outlet property="favoriteButton" destination="G2e-9s-cBh" id="oHD-O9-1gI"/>
                         <outlet property="tableView" destination="zCq-1z-g5x" id="nQf-fq-MRM"/>
                         <segue destination="K4s-6W-jJc" kind="presentation" identifier="toColorSelectViewSegue" id="diY-vn-Ppx"/>
                         <segue destination="OVV-YN-PDe" kind="show" identifier="toRouletteViewSegue" id="gLi-Rg-Hcg"/>
@@ -108,4 +125,9 @@
             <point key="canvasLocation" x="-615.20000000000005" y="-99.400299850074973"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

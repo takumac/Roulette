@@ -56,6 +56,9 @@ struct Constants {
             .foregroundColor : UIColor.red
         ]
     
+    // 各種ボタンのcornerRadius値
+    static let defaultCornerRadius = CGFloat(10)
+    
     // 各画面の背景色候補
     static let backGroundColorPalette = ColorPalette(name: "BackGround",
                                                      palette: [ColorSpec(hex: "#F5D7D9", name: "bgColor1"),
