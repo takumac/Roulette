@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		68196F15D346FC3CE23DE799 /* Pods_Roulette.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF7655A6BB7F69CE83F672A4 /* Pods_Roulette.framework */; };
+		E13A938326B31C8A007FF15C /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13A938226B31C8A007FF15C /* RealmManager.swift */; };
 		E16A78C1264837FD005F585D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16A78C0264837FD005F585D /* AppDelegate.swift */; };
 		E16A78C3264837FD005F585D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16A78C2264837FD005F585D /* SceneDelegate.swift */; };
 		E16A78C5264837FD005F585D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16A78C4264837FD005F585D /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		2601EBD63A4929CAF4DBDECC /* Pods-Roulette.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Roulette.release.xcconfig"; path = "Target Support Files/Pods-Roulette/Pods-Roulette.release.xcconfig"; sourceTree = "<group>"; };
 		758C9450A323550C1DAA0032 /* Pods-Roulette.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Roulette.debug.xcconfig"; path = "Target Support Files/Pods-Roulette/Pods-Roulette.debug.xcconfig"; sourceTree = "<group>"; };
+		E13A938226B31C8A007FF15C /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		E16A78BD264837FD005F585D /* Roulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roulette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E16A78C0264837FD005F585D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E16A78C2264837FD005F585D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				E1D7B021264841D6005CFD90 /* DataManager.swift */,
 				E1D7B022264841D6005CFD90 /* RouletteItemObj.swift */,
 				E1D7B023264841D6005CFD90 /* RouletteItemDataSet.swift */,
+				E13A938226B31C8A007FF15C /* RealmManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 			files = (
 				E1D7B02A264841D6005CFD90 /* PieChartViewManager.swift in Sources */,
 				E1D7B029264841D6005CFD90 /* RouletteItemCell.swift in Sources */,
+				E13A938326B31C8A007FF15C /* RealmManager.swift in Sources */,
 				E16A78C5264837FD005F585D /* ViewController.swift in Sources */,
 				E1D7B037264841D6005CFD90 /* RouletteVC.swift in Sources */,
 				E1D7B031264841D6005CFD90 /* DataManager.swift in Sources */,

@@ -8,6 +8,7 @@ target 'Roulette' do
     pod 'Eureka', '~>5.3.3'  
     pod 'ColorPickerRow'
     pod 'MaterialComponents'
+    pod 'RealmSwift'
   # Pods for Roulette
 
 end

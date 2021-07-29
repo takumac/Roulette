@@ -651,6 +651,11 @@ PODS:
   - MotionAnimator (4.0.1):
     - MotionInterchange (~> 3.0)
   - MotionInterchange (3.0.0)
+  - Realm (10.11.0):
+    - Realm/Headers (= 10.11.0)
+  - Realm/Headers (10.11.0)
+  - RealmSwift (10.11.0):
+    - Realm (= 10.11.0)
   - UIColor_Hex_Swift (5.1.0)
 
 DEPENDENCIES:
@@ -658,6 +663,7 @@ DEPENDENCIES:
   - ColorPickerRow
   - Eureka (~> 5.3.3)
   - MaterialComponents
+  - RealmSwift
 
 SPEC REPOS:
   trunk:
@@ -669,6 +675,8 @@ SPEC REPOS:
     - MDFTextAccessibility
     - MotionAnimator
     - MotionInterchange
+    - Realm
+    - RealmSwift
     - UIColor_Hex_Swift
 
 SPEC CHECKSUMS:
@@ -680,8 +688,10 @@ SPEC CHECKSUMS:
   MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
   MotionAnimator: 5f99d7c9592928c0f28a66283eda9c3b657dc480
   MotionInterchange: 13adae439b377e31d1674cc165539d50e1d1566a
+  Realm: 39ff23f0f709cd4ed93eb47ee6593c2158945b38
+  RealmSwift: 42713e09a8631070d6c12c3c5fb22b8edc1daa41
   UIColor_Hex_Swift: 8be7432edacb7fa91c78aa05ef3c30b66e4f9415
 
-PODFILE CHECKSUM: beaa3b7abcc52b722a98c09aee0b8a30af67c52c
+PODFILE CHECKSUM: e7dc697eb0fd013fd64727d4702d60fdaf3387d3
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.0
