@@ -126,6 +126,19 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         self.tableView.endUpdates()
     }
     
+    @IBAction func tapFavoriteButton(_ sender: Any) {
+        let alertSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let selectFavoriteAction = UIAlertAction(title: "お気に入りから選択", style: .default, handler: {(action: UIAlertAction!) in
+            self.performSegue(withIdentifier: "toFavoriteViewSegue", sender: nil)
+        })
+        let addFavoriteAction = UIAlertAction(title: "お気に入りに追加", style: .default, handler: {(action: UIAlertAction!) in })
+        
+        alertSheet.addAction(selectFavoriteAction)
+        alertSheet.addAction(addFavoriteAction)
+        
+        self.present(alertSheet, animated: true, completion: nil)
+    }
+    
     @IBAction func tapRouletteButton(_ sender: Any) {
         if rouletteItemDataSet.dataSet.count < 2 {
             let alertController = UIAlertController(title: "!!!Warning!!!",
@@ -302,6 +315,10 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         if segue.destination is AppSettingVC { // 遷移先が設定画面の場合
             rouletteItemDataSet.title = (navigationItem.titleView as! UITextField).text
             DataManager.dataManagerInstance.updateSetDataSet(dataSet: rouletteItemDataSet)
+        }
+        
+        if segue.destination is FavoriteVC { // 遷移先がお気に入り画面の場合
+            print("hoge")
         }
     }
 }

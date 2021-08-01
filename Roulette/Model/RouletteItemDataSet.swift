@@ -6,12 +6,15 @@
 //
 
 import Foundation
+import RealmSwift
 
-class RouletteItemDataSet {
-    var title: String!
+class RouletteItemDataSet: Object {
+    @objc dynamic var title: String!
     var dataSet: [RouletteitemObj]!
     
-    init() {
+    override init() {
+        super.init()
+        
         title = ""
         dataSet = []
     }

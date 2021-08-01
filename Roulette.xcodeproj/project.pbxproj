@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		68196F15D346FC3CE23DE799 /* Pods_Roulette.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF7655A6BB7F69CE83F672A4 /* Pods_Roulette.framework */; };
 		E13A938326B31C8A007FF15C /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13A938226B31C8A007FF15C /* RealmManager.swift */; };
+		E13A938726B7075A007FF15C /* FavoriteView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E13A938626B7075A007FF15C /* FavoriteView.storyboard */; };
+		E13A938A26B70779007FF15C /* FavoriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13A938926B70779007FF15C /* FavoriteVC.swift */; };
 		E16A78C1264837FD005F585D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16A78C0264837FD005F585D /* AppDelegate.swift */; };
 		E16A78C3264837FD005F585D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16A78C2264837FD005F585D /* SceneDelegate.swift */; };
 		E16A78C5264837FD005F585D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16A78C4264837FD005F585D /* ViewController.swift */; };
@@ -38,6 +40,8 @@
 		2601EBD63A4929CAF4DBDECC /* Pods-Roulette.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Roulette.release.xcconfig"; path = "Target Support Files/Pods-Roulette/Pods-Roulette.release.xcconfig"; sourceTree = "<group>"; };
 		758C9450A323550C1DAA0032 /* Pods-Roulette.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Roulette.debug.xcconfig"; path = "Target Support Files/Pods-Roulette/Pods-Roulette.debug.xcconfig"; sourceTree = "<group>"; };
 		E13A938226B31C8A007FF15C /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		E13A938626B7075A007FF15C /* FavoriteView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FavoriteView.storyboard; sourceTree = "<group>"; };
+		E13A938926B70779007FF15C /* FavoriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVC.swift; sourceTree = "<group>"; };
 		E16A78BD264837FD005F585D /* Roulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roulette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E16A78C0264837FD005F585D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E16A78C2264837FD005F585D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 				E1D7B01D264841D6005CFD90 /* RouletteItemCell.xib */,
 				E1D7B01E264841D6005CFD90 /* RouletteView.storyboard */,
 				E1D4DD6E269968A400B2CC5C /* ResultView.storyboard */,
+				E13A938626B7075A007FF15C /* FavoriteView.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -149,9 +154,9 @@
 			isa = PBXGroup;
 			children = (
 				E1D7B020264841D6005CFD90 /* Constants.swift */,
-				E1D7B021264841D6005CFD90 /* DataManager.swift */,
 				E1D7B022264841D6005CFD90 /* RouletteItemObj.swift */,
 				E1D7B023264841D6005CFD90 /* RouletteItemDataSet.swift */,
+				E1D7B021264841D6005CFD90 /* DataManager.swift */,
 				E13A938226B31C8A007FF15C /* RealmManager.swift */,
 			);
 			path = Model;
@@ -165,6 +170,7 @@
 				E1D7B027264841D6005CFD90 /* AppSettingVC.swift */,
 				E1D7B028264841D6005CFD90 /* RouletteVC.swift */,
 				E1D4DD71269968ED00B2CC5C /* ResultVC.swift */,
+				E13A938926B70779007FF15C /* FavoriteVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -237,6 +243,7 @@
 				E1D7B02F264841D6005CFD90 /* RouletteView.storyboard in Resources */,
 				E1D7B02B264841D6005CFD90 /* ColorSelectView.storyboard in Resources */,
 				E1D7B02C264841D6005CFD90 /* AppSettingView.storyboard in Resources */,
+				E13A938726B7075A007FF15C /* FavoriteView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +300,7 @@
 				E1D7B029264841D6005CFD90 /* RouletteItemCell.swift in Sources */,
 				E13A938326B31C8A007FF15C /* RealmManager.swift in Sources */,
 				E16A78C5264837FD005F585D /* ViewController.swift in Sources */,
+				E13A938A26B70779007FF15C /* FavoriteVC.swift in Sources */,
 				E1D7B037264841D6005CFD90 /* RouletteVC.swift in Sources */,
 				E1D7B031264841D6005CFD90 /* DataManager.swift in Sources */,
 				E1D7B035264841D6005CFD90 /* ColorSelectVC.swift in Sources */,
