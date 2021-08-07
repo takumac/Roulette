@@ -27,7 +27,7 @@ class PieChartViewManager {
         for i in 0..<dataSet.dataSet.count {
             let pieChartData = PieChartDataEntry(value: Double(dataSet.dataSet[i].ratio), label: dataSet.dataSet[i].rouletteItem)
             rouletteItemData.append(pieChartData)
-            rouletteItemColor.append(dataSet.dataSet[i].color)
+            rouletteItemColor.append(UIColor(dataSet.dataSet[i].color))
         }
         
         let pieChartDataSet = PieChartDataSet(entries: rouletteItemData)

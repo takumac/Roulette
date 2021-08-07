@@ -10,12 +10,10 @@ import RealmSwift
 
 class RouletteItemDataSet: Object {
     @objc dynamic var title: String!
-    var dataSet: [RouletteitemObj]!
+    var dataSet: List<RouletteitemObj>
     
     override init() {
-        super.init()
-        
         title = ""
-        dataSet = []
+        dataSet = List<RouletteitemObj>()
     }
 }

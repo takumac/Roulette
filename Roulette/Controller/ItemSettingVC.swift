@@ -7,6 +7,7 @@
 
 import UIKit
 import MaterialComponents
+import RealmSwift
 
 class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSource, RouletteItemCelldelegate {
     
@@ -70,6 +71,9 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        // ナビゲーションバーの設定
+        setTitleTextField()
+        
         tableView.reloadData()
         registerNotification()
         
@@ -87,8 +91,6 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     // MARK: - UI setting method
     func setUI() {
-        // ナビゲーションバーの設定
-        setTitleTextField()
         // tableViewの設定
         tableView.allowsSelection = false
         tableView.tableFooterView = UIView()
@@ -107,6 +109,7 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         if let navigationBarFrame = self.navigationController?.navigationBar.frame {
             let titleTextField: UITextField = UITextField(frame: navigationBarFrame)
             titleTextField.backgroundColor = .white
+            titleTextField.text = DataManager.dataManagerInstance.currentDataSet?.title
             titleTextField.placeholder = "タイトルを入力"
             titleTextField.borderStyle = .roundedRect
             self.navigationItem.titleView = titleTextField
@@ -117,7 +120,7 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     // MARK: - button action method
     @IBAction func tapAddItemButton(_ sender: Any) {
         let rouletteItemObj = RouletteitemObj()
-        rouletteItemObj.color = Constants.selectColorArray[rouletteItemDataSet.dataSet.count % 25]
+        rouletteItemObj.color = Constants.selectColorArray[rouletteItemDataSet.dataSet.count % 25].hexString()
         
         rouletteItemDataSet.dataSet.append(rouletteItemObj)
         
@@ -131,7 +134,10 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         let selectFavoriteAction = UIAlertAction(title: "お気に入りから選択", style: .default, handler: {(action: UIAlertAction!) in
             self.performSegue(withIdentifier: "toFavoriteViewSegue", sender: nil)
         })
-        let addFavoriteAction = UIAlertAction(title: "お気に入りに追加", style: .default, handler: {(action: UIAlertAction!) in })
+        let addFavoriteAction = UIAlertAction(title: "お気に入りに追加", style: .default, handler: {(action: UIAlertAction!) in
+            DataManager.dataManagerInstance.updateSetDataSet(dataSet: self.rouletteItemDataSet)
+            RealmManager.realmManagerInstance.addRouletteDataSet()
+        })
         
         alertSheet.addAction(selectFavoriteAction)
         alertSheet.addAction(addFavoriteAction)
@@ -153,7 +159,6 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             // こうすることで、最後に編集していたルーレット項目の内容を次画面に渡す配列に反映できる。
             closeKeyboard()
             // ルーレット画面へ遷移する
-            rouletteItemDataSet.title = (navigationItem.titleView as! UITextField).text
             performSegue(withIdentifier: "toRouletteViewSegue", sender: nil)
         }
     }
@@ -274,8 +279,10 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         if textField.tag == 1 {
             rouletteItemDataSet.dataSet[cellRow].rouletteItem = textField.text
         } else if textField.tag == 2 {
-            rouletteItemDataSet.dataSet[cellRow].ratio = Int(textField.text!)
+            rouletteItemDataSet.dataSet[cellRow].ratio = Int(textField.text!) ?? 1
         }
+        
+        rouletteItemDataSet.title = (navigationItem.titleView as! UITextField).text
     }
     
     func tapColorButton(button: UIButton) {
@@ -298,7 +305,7 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             if let button = sender as? UIButton {
                 colorSelectVC.resultHandler = { selectColor in
                     button.backgroundColor = selectColor
-                    self.rouletteItemDataSet.dataSet[button.tag].color = selectColor
+                    self.rouletteItemDataSet.dataSet[button.tag].color = selectColor.hexString()
                 }
             }
         }
@@ -313,12 +320,10 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }
         
         if segue.destination is AppSettingVC { // 遷移先が設定画面の場合
-            rouletteItemDataSet.title = (navigationItem.titleView as! UITextField).text
             DataManager.dataManagerInstance.updateSetDataSet(dataSet: rouletteItemDataSet)
         }
         
         if segue.destination is FavoriteVC { // 遷移先がお気に入り画面の場合
-            print("hoge")
         }
     }
 }

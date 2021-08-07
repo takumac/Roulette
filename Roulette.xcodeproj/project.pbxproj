@@ -11,6 +11,10 @@
 		E13A938326B31C8A007FF15C /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13A938226B31C8A007FF15C /* RealmManager.swift */; };
 		E13A938726B7075A007FF15C /* FavoriteView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E13A938626B7075A007FF15C /* FavoriteView.storyboard */; };
 		E13A938A26B70779007FF15C /* FavoriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13A938926B70779007FF15C /* FavoriteVC.swift */; };
+		E13A939C26BE0921007FF15C /* FavoriteItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13A939A26BE0921007FF15C /* FavoriteItemCell.swift */; };
+		E13A939D26BE0921007FF15C /* FavoriteItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E13A939B26BE0921007FF15C /* FavoriteItemCell.xib */; };
+		E13A93A226BE181B007FF15C /* ExtensionUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13A93A126BE181B007FF15C /* ExtensionUIColor.swift */; };
+		E13A93A526BE185E007FF15C /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13A93A426BE185E007FF15C /* ExtensionString.swift */; };
 		E16A78C1264837FD005F585D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16A78C0264837FD005F585D /* AppDelegate.swift */; };
 		E16A78C3264837FD005F585D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16A78C2264837FD005F585D /* SceneDelegate.swift */; };
 		E16A78C5264837FD005F585D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16A78C4264837FD005F585D /* ViewController.swift */; };
@@ -42,6 +46,10 @@
 		E13A938226B31C8A007FF15C /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		E13A938626B7075A007FF15C /* FavoriteView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FavoriteView.storyboard; sourceTree = "<group>"; };
 		E13A938926B70779007FF15C /* FavoriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVC.swift; sourceTree = "<group>"; };
+		E13A939A26BE0921007FF15C /* FavoriteItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemCell.swift; sourceTree = "<group>"; };
+		E13A939B26BE0921007FF15C /* FavoriteItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteItemCell.xib; sourceTree = "<group>"; };
+		E13A93A126BE181B007FF15C /* ExtensionUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIColor.swift; sourceTree = "<group>"; };
+		E13A93A426BE185E007FF15C /* ExtensionString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
 		E16A78BD264837FD005F585D /* Roulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roulette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E16A78C0264837FD005F585D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E16A78C2264837FD005F585D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +107,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E13A93A026BE17E7007FF15C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E13A93A126BE181B007FF15C /* ExtensionUIColor.swift */,
+				E13A93A426BE185E007FF15C /* ExtensionString.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		E16A78B4264837FC005F585D = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +143,7 @@
 				E1D7B024264841D6005CFD90 /* Controller */,
 				E1D7B01F264841D6005CFD90 /* Model */,
 				E1D7B017264841D6005CFD90 /* View */,
+				E13A93A026BE17E7007FF15C /* Extension */,
 				E16A78C6264837FD005F585D /* Main.storyboard */,
 				E16A78C9264837FE005F585D /* Assets.xcassets */,
 				E16A78CB264837FE005F585D /* LaunchScreen.storyboard */,
@@ -137,15 +155,17 @@
 		E1D7B017264841D6005CFD90 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E1D7B018264841D6005CFD90 /* RouletteItemCell.swift */,
 				E1D7B019264841D6005CFD90 /* PieChartViewManager.swift */,
 				E1D7B01A264841D6005CFD90 /* ColorSelectView.storyboard */,
 				E1D7B01B264841D6005CFD90 /* AppSettingView.storyboard */,
 				E1D7B01C264841D6005CFD90 /* ItemSettingView.storyboard */,
 				E1D7B01D264841D6005CFD90 /* RouletteItemCell.xib */,
+				E1D7B018264841D6005CFD90 /* RouletteItemCell.swift */,
 				E1D7B01E264841D6005CFD90 /* RouletteView.storyboard */,
 				E1D4DD6E269968A400B2CC5C /* ResultView.storyboard */,
 				E13A938626B7075A007FF15C /* FavoriteView.storyboard */,
+				E13A939B26BE0921007FF15C /* FavoriteItemCell.xib */,
+				E13A939A26BE0921007FF15C /* FavoriteItemCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -244,6 +264,7 @@
 				E1D7B02B264841D6005CFD90 /* ColorSelectView.storyboard in Resources */,
 				E1D7B02C264841D6005CFD90 /* AppSettingView.storyboard in Resources */,
 				E13A938726B7075A007FF15C /* FavoriteView.storyboard in Resources */,
+				E13A939D26BE0921007FF15C /* FavoriteItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,11 +324,14 @@
 				E13A938A26B70779007FF15C /* FavoriteVC.swift in Sources */,
 				E1D7B037264841D6005CFD90 /* RouletteVC.swift in Sources */,
 				E1D7B031264841D6005CFD90 /* DataManager.swift in Sources */,
+				E13A93A526BE185E007FF15C /* ExtensionString.swift in Sources */,
 				E1D7B035264841D6005CFD90 /* ColorSelectVC.swift in Sources */,
 				E1D7B036264841D6005CFD90 /* AppSettingVC.swift in Sources */,
 				E1D7B034264841D6005CFD90 /* ItemSettingVC.swift in Sources */,
 				E1D7B033264841D6005CFD90 /* RouletteItemDataSet.swift in Sources */,
 				E16A78C1264837FD005F585D /* AppDelegate.swift in Sources */,
+				E13A939C26BE0921007FF15C /* FavoriteItemCell.swift in Sources */,
+				E13A93A226BE181B007FF15C /* ExtensionUIColor.swift in Sources */,
 				E16A78C3264837FD005F585D /* SceneDelegate.swift in Sources */,
 				E1D4DD72269968ED00B2CC5C /* ResultVC.swift in Sources */,
 				E1D7B032264841D6005CFD90 /* RouletteItemObj.swift in Sources */,

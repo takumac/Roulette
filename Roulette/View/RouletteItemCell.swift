@@ -79,7 +79,7 @@ class RouletteItemCell: UITableViewCell, UITextFieldDelegate {
     
     func setValue(indexPath:IndexPath, rouletteItemObj: RouletteitemObj) {
         // 色選択ボタン
-        colorButton.backgroundColor = rouletteItemObj.color
+        colorButton.backgroundColor = UIColor(rouletteItemObj.color)
         colorButton.tag = indexPath.row
         // ルーレット項目
         rouletteItemTextField.text = rouletteItemObj.rouletteItem

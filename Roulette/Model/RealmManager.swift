@@ -13,13 +13,21 @@ class RealmManager {
     private var database: Realm!
     
     private init() {
-        database = try! Realm()
+        let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
+        database = try! Realm(configuration: config)
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
     
-    func addRouletteDataSet(object: RouletteItemDataSet) {
+    func addRouletteDataSet() {
+        let addDataSet: RouletteItemDataSet = DataManager.dataManagerInstance.copyDataSet()
         try! database?.write {
-            database?.add(object)
+            database?.add(addDataSet)
         }
+    }
+    
+    func getFavoriteDataSet() -> Results<RouletteItemDataSet> {
+        let results = database!.objects(RouletteItemDataSet.self)
+        return results
     }
     
 }

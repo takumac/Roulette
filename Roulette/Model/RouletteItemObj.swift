@@ -7,16 +7,19 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
-class RouletteitemObj {
-    var rouletteItem: String!
-    var ratio: Int!
-    var color: UIColor!
+class RouletteitemObj: Object {
+    @objc dynamic var rouletteItem: String!
+    @objc dynamic var ratio: Int = 1
+    @objc dynamic var color: String!
     
-    init() {
+    override init() {
+        super.init()
+        
         rouletteItem = ""
         ratio = 1
-        color = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1)
+        color = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1).hexString()
     }
     
 }

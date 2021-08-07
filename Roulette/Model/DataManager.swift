@@ -15,10 +15,29 @@ class DataManager {
         self.currentDataSet = dataSet
     }
     
+    func updateSetDataSet(dataSet: RouletteItemDataSet, title: String) {
+        self.currentDataSet = dataSet
+    }
+    
     func copyDataSet() -> RouletteItemDataSet {
         let instance = RouletteItemDataSet()
-        instance.title = currentDataSet?.title
-        instance.dataSet = currentDataSet?.dataSet
+        
+        instance.title = currentDataSet!.title
+        for item in currentDataSet!.dataSet {
+            instance.dataSet.append(RouletteitemObj(value: item))
+        }
+        
+        return instance
+    }
+    
+    func copyDataSet(rouletteItemDataSet: RouletteItemDataSet) -> RouletteItemDataSet {
+        let instance = RouletteItemDataSet()
+        
+        instance.title = rouletteItemDataSet.title
+        for item in rouletteItemDataSet.dataSet {
+            instance.dataSet.append(RouletteitemObj(value: item))
+        }
+        
         return instance
     }
     
