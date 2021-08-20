@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol RouletteItemCelldelegate {
+protocol RouletteItemCellDelegate {
     func textFieldShouldBeginEditing(cell: RouletteItemCell, textField: UITextField) -> ()
     func textFieldDidEndEditing(cell: RouletteItemCell, textField: UITextField) -> ()
     func tapColorButton(button: UIButton)
@@ -21,7 +21,7 @@ class RouletteItemCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var ratioTextField: UITextField!
     @IBOutlet weak var ratioLabel: UILabel!
     
-    var delegate: RouletteItemCelldelegate! = nil
+    var delegate: RouletteItemCellDelegate! = nil
     
     
     override func awakeFromNib() {

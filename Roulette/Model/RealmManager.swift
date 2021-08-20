@@ -15,13 +15,19 @@ class RealmManager {
     private init() {
         let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
         database = try! Realm(configuration: config)
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
+//        デバッグ用出力　シミュレータのRealmDBのアドレス
+//        print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
     
-    func addRouletteDataSet() {
-        let addDataSet: RouletteItemDataSet = DataManager.dataManagerInstance.copyDataSet()
+    func addRouletteDataSet(dataSet: RouletteItemDataSet) {
         try! database?.write {
-            database?.add(addDataSet)
+            database?.add(dataSet)
+        }
+    }
+    
+    func deleteRouletteDataSet(dataSet: RouletteItemDataSet) {
+        try! database?.write {
+            database.delete(dataSet)
         }
     }
     

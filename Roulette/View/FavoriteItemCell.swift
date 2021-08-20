@@ -7,13 +7,24 @@
 
 import UIKit
 
+protocol FavoriteItemCellDelegate {
+    func tapGestureAction(cell: UITableViewCell)
+}
+
 class FavoriteItemCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
+    
+    var delegate: FavoriteItemCellDelegate! = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         setUI()
+        
+        // ダブルタップでチート設定
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGestureAction(sender:)))
+        tapGesture.numberOfTapsRequired = 1
+        self.addGestureRecognizer(tapGesture)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -33,6 +44,11 @@ class FavoriteItemCell: UITableViewCell {
     
     func setValue(indexPath:IndexPath, rouletteItemDataSet: RouletteItemDataSet) {
         self.titleLabel.text = rouletteItemDataSet.title
+    }
+    
+    // MARK: - tapGesture method
+    @objc func tapGestureAction(sender: AnyObject) {
+        self.delegate.tapGestureAction(cell: self)
     }
     
 }

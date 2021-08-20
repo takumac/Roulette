@@ -9,7 +9,7 @@ import UIKit
 import MaterialComponents
 import RealmSwift
 
-class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSource, RouletteItemCelldelegate {
+class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, RouletteItemCellDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var buttonAreaView: UIView!
@@ -112,6 +112,7 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             titleTextField.text = DataManager.dataManagerInstance.currentDataSet?.title
             titleTextField.placeholder = "タイトルを入力"
             titleTextField.borderStyle = .roundedRect
+            titleTextField.delegate = self
             self.navigationItem.titleView = titleTextField
         }
     }
@@ -136,11 +137,21 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         })
         let addFavoriteAction = UIAlertAction(title: "お気に入りに追加", style: .default, handler: {(action: UIAlertAction!) in
             DataManager.dataManagerInstance.updateSetDataSet(dataSet: self.rouletteItemDataSet)
-            RealmManager.realmManagerInstance.addRouletteDataSet()
+            
+            let addDataSet = DataManager.dataManagerInstance.copyDataSet()
+            RealmManager.realmManagerInstance.addRouletteDataSet(dataSet: addDataSet)
+            
+            let dialog = UIAlertController(title: "お気に入りに追加しました", message: "", preferredStyle: .alert)
+            dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(dialog, animated: true, completion: nil)
         })
+        
+        let cancelAction = UIAlertAction(title: "cancel", style: UIAlertAction.Style.destructive, handler: nil)
+        
         
         alertSheet.addAction(selectFavoriteAction)
         alertSheet.addAction(addFavoriteAction)
+        alertSheet.addAction(cancelAction)
         
         self.present(alertSheet, animated: true, completion: nil)
     }
@@ -268,7 +279,13 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     
-    // MARK: - RouletteItemCellCellDelegate method
+    // MARK: - UITextFieldDelegate method
+    internal func textFieldDidEndEditing(_ textField: UITextField) {
+        rouletteItemDataSet.title = (navigationItem.titleView as! UITextField).text
+    }
+    
+    
+    // MARK: - RouletteItemCellDelegate method
     func textFieldShouldBeginEditing(cell: RouletteItemCell, textField: UITextField) {
     }
     
@@ -324,6 +341,7 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }
         
         if segue.destination is FavoriteVC { // 遷移先がお気に入り画面の場合
+            DataManager.dataManagerInstance.updateSetDataSet(dataSet: rouletteItemDataSet)
         }
     }
 }

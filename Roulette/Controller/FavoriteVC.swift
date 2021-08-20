@@ -8,8 +8,7 @@
 import UIKit
 import RealmSwift
 
-class FavoriteVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+class FavoriteVC: UIViewController, UITableViewDelegate, UITableViewDataSource, FavoriteItemCellDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     var favoriteDataSet: Results<RouletteItemDataSet>?
@@ -44,16 +43,6 @@ class FavoriteVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.reloadData()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     // MARK: - UI setting method
     func setUI() {
@@ -62,6 +51,7 @@ class FavoriteVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "FavoriteItemCell", bundle: nil), forCellReuseIdentifier: "favoriteItemCell")
     }
+    
     
     // MARK: - tableView DataSouce
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -74,6 +64,7 @@ class FavoriteVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteItemCell", for: indexPath) as! FavoriteItemCell
+        cell.selectionStyle = .none
 
         if let setColor = UserDefaults.standard.object(forKey: "backGroundColor") as? Data {
             let reloadColor = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(setColor) as? UIColor
@@ -85,23 +76,66 @@ class FavoriteVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if let favoriteDataSets = favoriteDataSet {
             let favoriteData = favoriteDataSets[indexPath.row]
             cell.setValue(indexPath: indexPath, rouletteItemDataSet: favoriteData)
+            cell.delegate = self
         }
         return cell
     }
     
+    
     // MARK: - tableView Delegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Constants.cellHeight
+        return Constants.cellHeight / 1.5
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title:"delete") { (ctxAction, view, completionHandler) in
+            guard let favoriteDataSets = self.favoriteDataSet else {
+                return
+            }
+            
+            RealmManager.realmManagerInstance.deleteRouletteDataSet(dataSet: favoriteDataSets[indexPath.row])
+            
+            self.tableView.beginUpdates()
+            self.tableView.deleteRows(at:[IndexPath(row: indexPath.row, section: 0)], with:.automatic)
+            self.tableView.endUpdates()
+            completionHandler(true)
+        }
+        
+        let trashImage = UIImage(systemName: "trash.fill")?.withTintColor(UIColor.white , renderingMode: .alwaysTemplate)
+        deleteAction.image = trashImage
+        deleteAction.backgroundColor = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1)
+        
+        let swipeAction = UISwipeActionsConfiguration(actions:[deleteAction])
+        swipeAction.performsFirstActionWithFullSwipe = false
+        return swipeAction
+    }
+    
+    
+    // MARK: - FavoriteIemCellDelegate method
+    func tapGestureAction(cell: UITableViewCell) {
         guard let favoriteDataSets = favoriteDataSet else {
             return
         }
         
-        let favoriteDataSet = favoriteDataSets[indexPath.row]
-        let copyDataSet = DataManager.dataManagerInstance.copyDataSet(rouletteItemDataSet: favoriteDataSet)
-        DataManager.dataManagerInstance.updateSetDataSet(dataSet: copyDataSet)
+        let tappedIndexPath = tableView.indexPath(for: cell)
+        if let tappedRow = tappedIndexPath?.row {
+            let favoriteDataSet = favoriteDataSets[tappedRow]
+            let copyDataSet = DataManager.dataManagerInstance.copyDataSet(rouletteItemDataSet: favoriteDataSet)
+            
+            let alert: UIAlertController = UIAlertController(title: copyDataSet.title, message: "ルーレットにセットしてもよろしいですか？", preferredStyle: UIAlertController.Style.alert)
+            let setAction: UIAlertAction = UIAlertAction(title: "設定", style: UIAlertAction.Style.default, handler: { (action: UIAlertAction!) -> Void in
+                DataManager.dataManagerInstance.updateSetDataSet(dataSet: copyDataSet)
+                self.navigationController?.popViewController(animated: true)
+            })
+            let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler: { (action: UIAlertAction!) -> Void in
+                
+            })
+            
+            alert.addAction(setAction)
+            alert.addAction(cancelAction)
+            
+            present(alert, animated: true, completion: nil)
+        }
     }
 
 }
