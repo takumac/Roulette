@@ -44,19 +44,19 @@ class RouletteVC: UIViewController, ChartViewDelegate {
         titleLabel.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         titleLabel.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.1).isActive = true
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        // AutoLayout
+
         rouletteView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
         rouletteView.bottomAnchor.constraint(equalTo: startButton.topAnchor).isActive = true
         rouletteView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         rouletteView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         rouletteView.translatesAutoresizingMaskIntoConstraints = false
-        // AutoLayout
+
         buttonAreaView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         buttonAreaView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         buttonAreaView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         buttonAreaView.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.1).isActive = true
         buttonAreaView.translatesAutoresizingMaskIntoConstraints = false
-        // ルーレットのスタートボタンのAutoLayout
+
         startButton.centerXAnchor.constraint(equalTo: buttonAreaView.centerXAnchor).isActive = true
         startButton.centerYAnchor.constraint(equalTo: buttonAreaView.centerYAnchor).isActive = true
         startButton.widthAnchor.constraint(equalTo: buttonAreaView.widthAnchor, multiplier: 0.8).isActive = true

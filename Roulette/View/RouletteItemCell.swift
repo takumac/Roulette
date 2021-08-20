@@ -43,6 +43,9 @@ class RouletteItemCell: UITableViewCell, UITextFieldDelegate {
     
     // MARK: - UI setting method
     func setUI() {
+        // キーボードタイプ
+        ratioTextField.keyboardType = UIKeyboardType.numberPad
+        
         // タグ付け
         rouletteItemTextField.tag = 1
         ratioTextField.tag = 2

@@ -25,25 +25,26 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
 
         // Do any additional setup after loading the view.
         setUI()
+        
         // AutoLayout
         tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: addButton.topAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        // AutoLayout
+        
         buttonAreaView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         buttonAreaView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         buttonAreaView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         buttonAreaView.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.1).isActive = true
         buttonAreaView.translatesAutoresizingMaskIntoConstraints = false
-        // AutoLayout
+        
         addButton.centerXAnchor.constraint(equalTo: buttonAreaView.centerXAnchor, constant: -CGFloat(self.view.frame.width / 4)).isActive = true
         addButton.centerYAnchor.constraint(equalTo: buttonAreaView.centerYAnchor).isActive = true
         addButton.widthAnchor.constraint(equalTo: buttonAreaView.widthAnchor, multiplier: 0.4).isActive = true
         addButton.heightAnchor.constraint(equalTo: buttonAreaView.heightAnchor, multiplier: 0.7).isActive = true
         addButton.translatesAutoresizingMaskIntoConstraints = false
-        // AutoLayout
+        
         favoriteButton.centerXAnchor.constraint(equalTo: buttonAreaView.centerXAnchor, constant: CGFloat(self.view.frame.width / 4)).isActive = true
         favoriteButton.centerYAnchor.constraint(equalTo: buttonAreaView.centerYAnchor).isActive = true
         favoriteButton.widthAnchor.constraint(equalTo: buttonAreaView.widthAnchor, multiplier: 0.4).isActive = true
@@ -167,7 +168,6 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             present(alertController, animated: true, completion: nil)
         } else {
             // 画面上の全てのViewに対するフォーカスを外す。
-            // こうすることで、最後に編集していたルーレット項目の内容を次画面に渡す配列に反映できる。
             closeKeyboard()
             // ルーレット画面へ遷移する
             performSegue(withIdentifier: "toRouletteViewSegue", sender: nil)
