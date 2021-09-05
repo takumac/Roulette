@@ -17,6 +17,7 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     @IBOutlet weak var addButton: MDCRaisedButton!
     @IBOutlet weak var favoriteButton: MDCRaisedButton!
     
+    
     var rouletteItemDataSet: RouletteItemDataSet!
     var cheatItemIndex: Int?
 
@@ -73,7 +74,7 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     override func viewDidAppear(_ animated: Bool) {
         // ナビゲーションバーの設定
-        setTitleTextField()
+        setNavigationBar()
         
         tableView.reloadData()
         registerNotification()
@@ -106,14 +107,22 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         favoriteButton.layer.cornerRadius = Constants.defaultCornerRadius
     }
     
-    func setTitleTextField() {
+    func setNavigationBar() {
         if let navigationBarFrame = self.navigationController?.navigationBar.frame {
+            // ルーレットボタン
+            let rouletteButton = UIBarButtonItem(image: UIImage(named: "roulette")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(tapRouletteButton))
+            // 設定ボタン
+            let settingButton = UIBarButtonItem(image: UIImage(named: "setting")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(tapSettingButton))
+            // タイトル用の入力欄
             let titleTextField: UITextField = UITextField(frame: navigationBarFrame)
             titleTextField.backgroundColor = .white
             titleTextField.text = DataManager.dataManagerInstance.currentDataSet?.title
             titleTextField.placeholder = "タイトルを入力"
             titleTextField.borderStyle = .roundedRect
             titleTextField.delegate = self
+            
+            self.navigationItem.rightBarButtonItem = rouletteButton
+            self.navigationItem.leftBarButtonItem = settingButton
             self.navigationItem.titleView = titleTextField
         }
     }
@@ -147,7 +156,7 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             self.present(dialog, animated: true, completion: nil)
         })
         
-        let cancelAction = UIAlertAction(title: "cancel", style: UIAlertAction.Style.destructive, handler: nil)
+        let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
         
         
         alertSheet.addAction(selectFavoriteAction)
@@ -157,7 +166,7 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         self.present(alertSheet, animated: true, completion: nil)
     }
     
-    @IBAction func tapRouletteButton(_ sender: Any) {
+    @objc func tapRouletteButton(_ sender: Any) {
         if rouletteItemDataSet.dataSet.count < 2 {
             let alertController = UIAlertController(title: "!!!Warning!!!",
                                                     message: "ルーレット項目は2つ以上必要です",
@@ -174,7 +183,7 @@ class ItemSettingVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }
     }
     
-    @IBAction func tapSettingButton(_ sender: Any) {
+    @objc func tapSettingButton(_ sender: Any) {
         closeKeyboard()
         // アプリ設定画面へ遷移する
         performSegue(withIdentifier: "toAppSettingViewSegue", sender: nil)

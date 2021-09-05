@@ -54,16 +54,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="Zpk-L7-Ko1">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" title="Setting" id="o0R-4O-W2T">
-                            <connections>
-                                <action selector="tapSettingButton:" destination="RyW-e8-fpU" id="6Xb-gz-YHw"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Roulette" id="j5N-AU-lrU" userLabel="Roulette">
-                            <connections>
-                                <action selector="tapRouletteButton:" destination="RyW-e8-fpU" id="McJ-cr-QB5"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="wPg-Cg-z3z" id="Qnp-DF-dyK"/>

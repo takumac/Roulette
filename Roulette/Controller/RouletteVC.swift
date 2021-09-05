@@ -168,13 +168,13 @@ class RouletteVC: UIViewController, ChartViewDelegate {
     func displayNeedle() {
         // ルーレットの針の描画設定
         let safeAreaHeight = self.view.safeAreaLayoutGuide.layoutFrame.height
-        needleView = UIImageView(image: UIImage(named: "needle_gray")!)
+        needleView = UIImageView(image: UIImage(named: "needle")!)
         self.view.addSubview(needleView!)
         // ルーレットの針のAutoLayout
         needleView?.centerXAnchor.constraint(equalTo: self.rouletteView.centerXAnchor).isActive = true
         needleView?.topAnchor.constraint(equalTo: self.rouletteView.topAnchor, constant: (safeAreaHeight/10.0)*0.5).isActive = true
         needleView?.widthAnchor.constraint(equalTo: self.rouletteView.widthAnchor, multiplier: 0.15).isActive = true
-        needleView?.heightAnchor.constraint(equalTo: self.rouletteView.heightAnchor, multiplier: 0.2).isActive = true
+        needleView?.heightAnchor.constraint(equalTo: self.rouletteView.heightAnchor, multiplier: 0.15).isActive = true
         needleView?.translatesAutoresizingMaskIntoConstraints = false
     }
     
