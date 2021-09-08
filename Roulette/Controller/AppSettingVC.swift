@@ -89,8 +89,14 @@ class AppSettingVC: FormViewController {
                 }.onChange({ row in
                     UserDefaults.standard.set(row.value, forKey: "cheatFlg")
                 })
-                <<< PushRow<String>() {
+                <<< ButtonRow() {
                     $0.title = "出来レースについて"
+                    $0.cellStyle = .value1
+                }.cellUpdate { cell, row in
+                    cell.tintColor = .black
+                    cell.accessoryType = .disclosureIndicator
+                }.onCellSelection { cell, row in
+                    
                 }
             +++ Section("情報")
                 // アプリバージョン
@@ -99,11 +105,28 @@ class AppSettingVC: FormViewController {
                     $0.value = "1.0.0"
                 }
                 // デベロッパー情報
-                <<< PushRow<String>() {
+                <<< ButtonRow() {
                     $0.title = "開発者"
+                    $0.cellStyle = .value1
+                }.cellUpdate { cell, row in
+                    cell.tintColor = .black
+                    cell.accessoryType = .disclosureIndicator
+                }.onCellSelection { cell, row in
+                    let url = NSURL(string: "https://twitter.com/taku_pipipi")
+                    if UIApplication.shared.canOpenURL(url! as URL) {
+                        UIApplication.shared.open(url! as URL, options: [:], completionHandler: { result in
+                        })
+                    }
                 }
-                <<< PushRow<String>() {
+                // レビュー
+                <<< ButtonRow() {
                     $0.title = "レビューする"
+                    $0.cellStyle = .value1
+                }.cellUpdate { cell, row in
+                    cell.tintColor = .black
+                    cell.accessoryType = .disclosureIndicator
+                }.onCellSelection { cell, row in
+                    
                 }
     }
 
