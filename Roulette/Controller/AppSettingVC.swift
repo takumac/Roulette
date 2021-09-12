@@ -23,6 +23,10 @@ class AppSettingVC: FormViewController {
             self.tableView.backgroundColor = Constants.backGroundColorPalette.palette[0].color
         }
         
+        // 出来レース設定についての遷移先画面設定
+        let cheatFlgExplanationStoryboard = UIStoryboard(name: "CheatFlgExplanationView", bundle: nil)
+        let cheatFlgExplanationVC = cheatFlgExplanationStoryboard.instantiateInitialViewController() as! CheatFlgExplanationVC
+        
         // 設定フォーム
         form
             +++ Section("アプリ設定")
@@ -92,9 +96,11 @@ class AppSettingVC: FormViewController {
                 <<< ButtonRow() {
                     $0.title = "出来レースについて"
                     $0.cellStyle = .value1
-                }.cellUpdate { cell, row in
-                    cell.tintColor = .black
-                    cell.accessoryType = .disclosureIndicator
+                    $0.presentationMode = .show(controllerProvider: ControllerProvider.callback(builder: {
+                        return cheatFlgExplanationVC
+                    }), onDismiss: { vc in
+                        vc.navigationController?.popViewController(animated: true)
+                    })
                 }.onCellSelection { cell, row in
                     
                 }
