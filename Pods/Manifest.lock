@@ -651,12 +651,12 @@ PODS:
   - MotionAnimator (4.0.1):
     - MotionInterchange (~> 3.0)
   - MotionInterchange (3.0.0)
-  - Realm (10.11.0):
-    - Realm/Headers (= 10.11.0)
-  - Realm/Headers (10.11.0)
-  - RealmSwift (10.11.0):
-    - Realm (= 10.11.0)
-  - UIColor_Hex_Swift (5.1.0)
+  - Realm (10.15.0):
+    - Realm/Headers (= 10.15.0)
+  - Realm/Headers (10.15.0)
+  - RealmSwift (10.15.0):
+    - Realm (= 10.15.0)
+  - UIColor_Hex_Swift (5.1.7)
 
 DEPENDENCIES:
   - Charts (~> 3.6.0)
@@ -688,9 +688,9 @@ SPEC CHECKSUMS:
   MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
   MotionAnimator: 5f99d7c9592928c0f28a66283eda9c3b657dc480
   MotionInterchange: 13adae439b377e31d1674cc165539d50e1d1566a
-  Realm: 39ff23f0f709cd4ed93eb47ee6593c2158945b38
-  RealmSwift: 42713e09a8631070d6c12c3c5fb22b8edc1daa41
-  UIColor_Hex_Swift: 8be7432edacb7fa91c78aa05ef3c30b66e4f9415
+  Realm: 13e805eb23d3eb8d8bb700d9cf9761f4b625b389
+  RealmSwift: 51b29bb4e19fe7322c8a599cf3494b8a08888ef1
+  UIColor_Hex_Swift: 31cd3e47440f07a20d2503a36bb0437a445b3c29
 
 PODFILE CHECKSUM: e7dc697eb0fd013fd64727d4702d60fdaf3387d3
 

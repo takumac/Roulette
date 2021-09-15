@@ -85,4 +85,10 @@ class CheatFlgExplanationVC: UIViewController, UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         
     }
+    
+    // MARK: - UI tap action method
+    @IBAction func pageControllTap(_ sender: Any) {
+        scrollView.contentOffset.x = scrollView.frame.size.width * CGFloat(pageControl.currentPage)
+    }
+    
 }
