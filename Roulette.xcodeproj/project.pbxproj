@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		68196F15D346FC3CE23DE799 /* Pods_Roulette.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF7655A6BB7F69CE83F672A4 /* Pods_Roulette.framework */; };
 		E13A938326B31C8A007FF15C /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13A938226B31C8A007FF15C /* RealmManager.swift */; };
 		E13A938726B7075A007FF15C /* FavoriteView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E13A938626B7075A007FF15C /* FavoriteView.storyboard */; };
 		E13A938A26B70779007FF15C /* FavoriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13A938926B70779007FF15C /* FavoriteVC.swift */; };
@@ -23,6 +22,7 @@
 		E16A78CD264837FE005F585D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E16A78CB264837FE005F585D /* LaunchScreen.storyboard */; };
 		E17A28DE26EDC82C0013A9F4 /* CheatFlgExplanationView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E17A28DD26EDC82C0013A9F4 /* CheatFlgExplanationView.storyboard */; };
 		E17A28E126EDC84B0013A9F4 /* CheatFlgExplanationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17A28E026EDC84A0013A9F4 /* CheatFlgExplanationVC.swift */; };
+		E1A35B14276EDEC70043F0B2 /* Pods_Roulette.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF7655A6BB7F69CE83F672A4 /* Pods_Roulette.framework */; };
 		E1D4DD6F269968A500B2CC5C /* ResultView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1D4DD6E269968A400B2CC5C /* ResultView.storyboard */; };
 		E1D4DD72269968ED00B2CC5C /* ResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D4DD71269968ED00B2CC5C /* ResultVC.swift */; };
 		E1D7B029264841D6005CFD90 /* RouletteItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D7B018264841D6005CFD90 /* RouletteItemCell.swift */; };
@@ -87,7 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68196F15D346FC3CE23DE799 /* Pods_Roulette.framework in Frameworks */,
+				E1A35B14276EDEC70043F0B2 /* Pods_Roulette.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +494,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9W82QL85G8;
 				INFOPLIST_FILE = Roulette/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -501,7 +502,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.TakumiSakai.Roulette;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -514,6 +515,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9W82QL85G8;
 				INFOPLIST_FILE = Roulette/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -521,7 +523,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.TakumiSakai.Roulette;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
