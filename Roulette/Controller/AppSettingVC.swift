@@ -118,7 +118,7 @@ class AppSettingVC: FormViewController {
                     cell.tintColor = .black
                     cell.accessoryType = .disclosureIndicator
                 }.onCellSelection { cell, row in
-                    let url = NSURL(string: "https://twitter.com/taku_pipipi")
+                    let url = NSURL(string: "https://twitter.com/sake_enenen")
                     if UIApplication.shared.canOpenURL(url! as URL) {
                         UIApplication.shared.open(url! as URL, options: [:], completionHandler: { result in
                         })
