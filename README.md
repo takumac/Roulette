@@ -17,8 +17,6 @@ This application is a simple roulette application.
 
 ## Usage
 ```
-$ mkdir tmpFile
-$ cd tmpFile
 $ git clone https://github.com/takumac/Roulette
 $ cd Roulette
 $ pod install
