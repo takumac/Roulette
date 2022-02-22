@@ -1,8 +1,6 @@
 # Roulette
 
-![demo](https://raw.github.com/wiki/takumac/Roulette/images/add_item.gif)
-
-<img src="https://raw.github.com/wiki/takumac/Roulette/images/add_item.gif" width="400">
+<img src="https://raw.github.com/wiki/takumac/Roulette/images/add_item.gif" width="300">&emsp;&emsp;&emsp;&emsp;<img src="https://raw.github.com/wiki/takumac/Roulette/images/run_roulette.gif" width="300">
 
 ## Overview
 This application is a simple roulette application.
