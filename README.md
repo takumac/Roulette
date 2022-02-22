@@ -17,7 +17,7 @@ This application is a simple roulette application.
 
 ## Usage
 ```
-$ git clone https://github.com/takumac/Roulette<br>
+$ git clone https://github.com/takumac/Roulette
 $ pod install
 ```
 
