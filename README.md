@@ -22,6 +22,10 @@ $ pod install
 ```
 
 ## Features
+- Create a list with your original items, ratios and spin the roulette. 
+- You can register the list you use regularly as a favorite.
+- You can customize the application to your liking.
+- If you use the cheat function, the roulette result will be ...
 
 ## Author
 [twitter](https://twitter.com/sake_enenen)
