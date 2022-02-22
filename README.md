@@ -1,6 +1,6 @@
 # Roulette
 
-![demo](https://raw.github.com/wiki/takuyama29/WorldTracking/images/Untitled.gif https://github.com/wiki/takumac/Roulette/)
+![demo](https://github.com/takumac/Roulette.wiki.git/images/add_itm.gif)
 
 ## Overview
 This application is a simple roulette application.
