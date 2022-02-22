@@ -8,7 +8,7 @@ This application is a simple roulette application.
 ## Requirement
 - Xcode 12.4
 - Run iOS Simulator or iOS Devices
-- iOS 13.0 and Later
+- iOS 1.0 and Later
 - Charts 3.6.0
 - Eureka 5.3.3
 - ColorPickerRow
@@ -18,6 +18,7 @@ This application is a simple roulette application.
 ## Usage
 ```
 $ git clone https://github.com/takumac/Roulette
+$ cd Roulette
 $ pod install
 ```
 
